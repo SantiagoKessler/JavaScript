@@ -1,6 +1,32 @@
+
+const usuarios = [];
+
+let nuevoUsuario = prompt("Ingresa un nuevo nombre de usuario:");
+let nuevaContraseña = prompt("Ingresa una nueva contraseña:");
+
+function crearUsuario(usuario, contraseña) {
+    if (contraseña.length >= 8) {
+        usuarios.push({ usuario, contraseña });
+        return "Usuario creado exitosamente.";
+    } else {
+        return "La contraseña debe tener al menos 8 caracteres.";
+    }
+}
+
+while (nuevaContraseña.length < 8) {
+    alert("La contraseña debe tener al menos 8 caracteres.");
+    nuevaContraseña = prompt("Ingresa una nueva contraseña:");
+}
+
+const resultado = crearUsuario(nuevoUsuario, nuevaContraseña);
+alert(resultado);
+console.log("Usuarios en la base de datos:");
+usuarios.forEach(usuario => {
+    console.log(`Usuario: ${usuario.usuario}, Contraseña: ${usuario.contraseña}`);
+});
+
 alert("¡Bienvenido a tu programa de entrenamiento de músculos!");
 
-// Declarar los nombres de cada músculo.
 const opcionesMusculos = ["piernas", "pecho", "espalda", "hombros", "brazos"];
 
 function mostrarEjercicios(musculo) {
@@ -41,7 +67,7 @@ function mostrarInformacionDetallada(musculo) {
     }
 }
 
-// Solicitar al usuario que elija un músculo.
+
 const seleccion = prompt("Elige un músculo para entrenar: piernas, pecho, espalda, brazos o hombros").toLowerCase();
 
 if (opcionesMusculos.includes(seleccion)) {
@@ -59,7 +85,45 @@ if (deseaMasInfo === "si") {
 } else {
     alert("Porfavor ingrese si o no ")
 }
-alert("¡A entrenar se ha dicho!");
+
+
+
+let deseaContinuar = true;
+
+while (deseaContinuar) {
+    const respuestaContinuar = prompt("¿Deseas entrenar otro músculo? (si/no)").toLowerCase();
+
+    if (respuestaContinuar === "no") {
+        deseaContinuar = false;
+        alert("¡Gracias por entrenar! ¡Hasta luego!");
+    } else if (respuestaContinuar === "si") {
+        const seleccion = prompt("Elige un músculo para entrenar: piernas, pecho, espalda, brazos o hombros").toLowerCase();
+
+        if (opcionesMusculos.includes(seleccion)) {
+            const ejerciciosSeleccionados = mostrarEjercicios(seleccion);
+            alert(`Ejercicios para ${seleccion}: ${ejerciciosSeleccionados}`);
+        } else {
+            alert("Selección inválida. Por favor, elige uno de los músculos disponibles.");
+            continue;
+        }
+
+        const deseaMasInfo = prompt("¿Deseas saber más sobre los ejercicios? (si/no)").toLowerCase();
+        if (deseaMasInfo === "si") {
+            const informacionDetallada = mostrarInformacionDetallada(seleccion);
+            alert(informacionDetallada);
+        } else if (deseaMasInfo !== "no") {
+            alert("Por favor, ingresa 'si' o 'no'.");
+            continue;
+        }
+    } else {
+        alert("Por favor, ingresa 'si' o 'no'.");
+    }
+}
+
+
+
+
+
 
 
 
