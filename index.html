@@ -5,12 +5,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body class="body1">
+    <h2>Iniciar Sesión</h2>
+    <form id="loginForm">
+        <label for="username">Usuario</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" required>
+
+
+        <button type="button" onclick="simulateLogin()">Iniciar Sesión</button>
+    </form>
+
+    <p id="message"></p>
+
     <script src="./JS/app.js"></script>
-
-
 </body>
+
+
 
 </html>

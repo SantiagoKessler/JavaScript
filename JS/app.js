@@ -1,130 +1,81 @@
+function simulateLogin() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
 
-const usuarios = [];
+    if (password.length >= 8) {
 
-let nuevoUsuario = prompt("Ingresa un nuevo nombre de usuario:");
-let nuevaContraseña = prompt("Ingresa una nueva contraseña:");
+        document.getElementById("message").innerHTML = "Inicio de sesión exitoso para el usuario: " + username;
 
-function crearUsuario(usuario, contraseña) {
-    if (contraseña.length >= 8) {
-        usuarios.push({ usuario, contraseña });
-        return "Usuario creado exitosamente.";
+        localStorage.setItem("username", username);
+
+        setTimeout(function () {
+            window.location.href = "ejercicios.html";
+        }, 1000);
     } else {
-        return "La contraseña debe tener al menos 8 caracteres.";
+        document.getElementById("message").innerHTML = "La contraseña debe tener 8 o más caracteres.";
     }
 }
 
-while (nuevaContraseña.length < 8) {
-    alert("La contraseña debe tener al menos 8 caracteres.");
-    nuevaContraseña = prompt("Ingresa una nueva contraseña:");
-}
+window.onload = function () {
+    var savedUsername = localStorage.getItem("username");
+    if (savedUsername) {
+        document.getElementById("username").value = savedUsername;
+    }
+};
 
-const resultado = crearUsuario(nuevoUsuario, nuevaContraseña);
-alert(resultado);
-console.log("Usuarios en la base de datos:");
-usuarios.forEach(usuario => {
-    console.log(`Usuario: ${usuario.usuario}, Contraseña: ${usuario.contraseña}`);
-});
 
-alert("¡Bienvenido a tu programa de entrenamiento de músculos!");
+const musculos = [
+    {
+        nombre: "Pecho",
+        ejercicos: "Pres banca plano con barra, Pres banca inclinado con mancuernas, Cruce de poleas, Apertura en maquina",
+        frecuencia: 1,
+    },
+    {
+        nombre: "Espalda",
+        ejercicos: "Remo con barra, Pull hover ,  Jalon al pecho, Remoa una mano con mancuerna",
+        frecuencia: 1,
+    },
 
-const opcionesMusculos = ["piernas", "pecho", "espalda", "hombros", "brazos"];
+    {
+        nombre: "Hombro",
+        ejercicos: "Pres militar con mancuernas, Elevaciones laterales en polea, Frontales con barra, Elevaciones laterales sentado con mancuernas",
+        frecuencia: 1,
+    },
+    {
+        nombre: "Piernas",
+        ejercicos: "Sentadilla, Peso muerto rumano, Prensa, Extension de cuadriceps",
+        frecuencia: 1,
+    },
+    {
+        nombre: "Biceps",
+        ejercicos: "Curl martillo,  Curl de biceps en barra W,  Curl de biceps reclinaodo en banco",
+        frecuencia: 2,
+    },
+    {
+        nombre: "Triceps",
+        ejercicos: "Extension de triceps en polea con barra,  Extension de triceps en polea a una mano, Extension de triceps en polea con soga",
+        frecuencia: 2,
+    }
+];
 
-function mostrarEjercicios(musculo) {
-    let ejercicios = "";
 
-    if (musculo === "piernas") {
-        ejercicios = "Sentadillas, Peso muerto rumano, Extension de cuadriceps.";
-    } else if (musculo === "pecho") {
-        ejercicios = "Press de banca plano , Press de banca inclinado con mancuernas, Apertura en maquina.";
-    } else if (musculo === "espalda") {
-        ejercicios = " Remo con barra, Remo en polea baja , Jalon al pecho.";
-    } else if (musculo === "hombros") {
-        ejercicios = "Press militar, Elevaciones laterales, Elevaciones frontales.";
-    } else if (musculo === "brazos") {
-        ejercicios = "Curl de bíceps, Extension de triceps en polea, Curl martillo.";
+function buscarMusculo() {
+    const nombreMusculo = document.getElementById("musculo").value;
+    const nombreSpan = document.getElementById("nombreMusculo");
+    const ejerciciosSpan = document.getElementById("ejerciciosMusculo");
+    const frecuenciaSpan = document.getElementById("frecuenciaMusculo");
+
+
+    const musculoEncontrado = musculos.find(
+        (musculo) => musculo.nombre.toLowerCase() === nombreMusculo.toLowerCase()
+    );
+
+    if (musculoEncontrado) {
+        nombreSpan.textContent = musculoEncontrado.nombre;
+        ejerciciosSpan.textContent = musculoEncontrado.ejercicos;
+        frecuenciaSpan.textContent = musculoEncontrado.frecuencia;
     } else {
-        ejercicios = "No se encontraron ejercicios para ese músculo.";
-    }
-
-    return ejercicios;
-}
-
-function mostrarInformacionDetallada(musculo) {
-    switch (musculo) {
-        case "piernas":
-            return "Aquí hay más información sobre los ejercicios para piernas: Sentadillas principalmente trabajan los Cuádriceps (parte frontal del muslo), glúteos (principalmente glúteo mayor), isquiotibiales (parte posterior del muslo) . Peso Muerto Rumano trabajan los Isquiotibiales (parte posterior del muslo), glúteos (principalmente glúteo mayor).Extensión de Cuádriceps hacen un enfoque en Cuádriceps (parte frontal del muslo), especialmente el músculo vasto lateral y el músculo vasto medial.";
-        case "pecho":
-            return "Aquí hay más información sobre los ejercicios para pecho: Press de Banca Plano principalmente trabajan loa músculos pectorales mayores (parte central), tríceps y deltoides anterior (parte frontal de los hombros). Press de Banca Inclinado con Mancuernas trabajan los músculos pectorales mayores (parte superior), tríceps y deltoides anterior (parte frontal de los hombros). Apertura en Máquina van a trabajar músculos pectorales mayores, especialmente las fibras musculares que se estiran y contraen durante el movimiento de apertura.";
-        case "espalda":
-            return "Aquí hay más información sobre los ejercicios para espalda: Remo en barra principalmente trabajan los músculos dorsales anchos , músculos romboides. Remo en polea baja trabaja los músculos dorsales anchos , músculos romboides,y músculos erector de la columna (en la espalda baja). Jalon al pecho los  musculos más solicitados en este ejercicio son los dorsales y tambien la parte del músculo trapecio (parte superior)";
-        case "hombros":
-            return "Aquí hay más información sobre los ejercicios para hombros: Press Militar, este ejercicio se enfoca en el deltoides anterior y lateral.Elevaciones Laterales para trabajar el deltoides lateral. Elevaciones Frontales se enfoca en el deltoides anterior"
-
-        case "brazos":
-            return "Aquí hay más información sobre los ejercicios para brazos:Curl de Bíceps trabaja la cabeza corta del biceps. Curl de Bíceps Martillo trabaja tanto la cabeza corta como la cabeza larga del bíceps. Extension de triceps en pole trabaja el músculo del tríceps braquial. Esta es la parte posterior del brazo y consiste en tres cabezas: lateral, medial y larga. El ejercicio de extensión de tríceps en polea se enfoca en las tres cabezas del tríceps";
-        default:
-            return "No se encontró información detallada para ese músculo.";
+        document.getElementById("mensaje").innerHTML = "La contraseña debe tener 8 o más caracteres.";
     }
 }
-
-
-const seleccion = prompt("Elige un músculo para entrenar: piernas, pecho, espalda, brazos o hombros").toLowerCase();
-
-if (opcionesMusculos.includes(seleccion)) {
-    const ejerciciosSeleccionados = mostrarEjercicios(seleccion);
-    alert(`Ejercicios para ${seleccion}: ${ejerciciosSeleccionados}`);
-} else {
-    alert("Selección inválida. Por favor, elige uno de los músculos disponibles.");
-}
-const deseaMasInfo = prompt("¿Deseas saber más sobre los ejercicios? (si/no)").toLowerCase();
-if (deseaMasInfo === "si") {
-    const informacionDetallada = mostrarInformacionDetallada(seleccion);
-    alert(informacionDetallada);
-} else if (deseaMasInfo === "no") {
-    alert("te perdiste informacion valiosa")
-} else {
-    alert("Porfavor ingrese si o no ")
-}
-
-
-
-let deseaContinuar = true;
-
-while (deseaContinuar) {
-    const respuestaContinuar = prompt("¿Deseas entrenar otro músculo? (si/no)").toLowerCase();
-
-    if (respuestaContinuar === "no") {
-        deseaContinuar = false;
-        alert("¡Gracias por entrenar! ¡Hasta luego!");
-    } else if (respuestaContinuar === "si") {
-        const seleccion = prompt("Elige un músculo para entrenar: piernas, pecho, espalda, brazos o hombros").toLowerCase();
-
-        if (opcionesMusculos.includes(seleccion)) {
-            const ejerciciosSeleccionados = mostrarEjercicios(seleccion);
-            alert(`Ejercicios para ${seleccion}: ${ejerciciosSeleccionados}`);
-        } else {
-            alert("Selección inválida. Por favor, elige uno de los músculos disponibles.");
-            continue;
-        }
-
-        const deseaMasInfo = prompt("¿Deseas saber más sobre los ejercicios? (si/no)").toLowerCase();
-        if (deseaMasInfo === "si") {
-            const informacionDetallada = mostrarInformacionDetallada(seleccion);
-            alert(informacionDetallada);
-        } else if (deseaMasInfo !== "no") {
-            alert("Por favor, ingresa 'si' o 'no'.");
-            continue;
-        }
-    } else {
-        alert("Por favor, ingresa 'si' o 'no'.");
-    }
-}
-
-
-
-
-
-
-
-
 
