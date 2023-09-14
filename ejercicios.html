@@ -11,31 +11,30 @@
 <body class="body2">
     <h1>Entrenamiento de Músculos</h1>
 
-    <h2>¿Que musculo queres entrenar?</h2>
+    <h2>¿Qué músculo quieres entrenar?</h2>
     <label for="musculo">Nombre del Músculo:</label>
     <input type="text" id="musculo">
     <button onclick="buscarMusculo()">Buscar</button>
     <p id="mensaje"></p>
     <div class="resultado" id="resultadoBusqueda">
-
-        <h3>Musculo:</h3><span id="nombreMusculo"></span><br>
+        <h3>Músculo:</h3><span id="nombreMusculo"></span><br>
         <p>Ejercicios:</p> <span id="ejerciciosMusculo"></span><br>
         <p>Frecuencia:</p> <span id="frecuenciaMusculo"></span>
     </div>
-
 
     <h2>Insertar Músculo Personalizado</h2>
     <label for="nombreNuevoMusculo">Nombre:</label>
     <input type="text" id="nombreNuevoMusculo"><br>
     <label for="frecuenciaNuevoMusculo">Frecuencia:</label>
     <input type="text" id="frecuenciaNuevoMusculo"><br>
-    <label for="tipoEntrenamientoNuevoMusculo">Tipo de Entrenamiento:</label>
+    <label for="tipoEntrenamientoNuevoMusculo">Ejercicios:</label>
     <input type="text" id="tipoEntrenamientoNuevoMusculo"><br>
-    <label for="detalleEntrenamientoNuevoMusculo">Detalle de Entrenamiento:</label>
-    <input type="text" id="detalleEntrenamientoNuevoMusculo"><br>
     <button onclick="insertarMusculoPersonalizado()">Insertar</button>
-    <p id="mensajeInsercion"></p>
+    <p id="mensajeInserción"></p>
 
+
+    <script src="./JS/musculos.json"></script>
     <script src="./JS/app.js"></script>
+</body>
 
 </html>

@@ -64,7 +64,7 @@ function buscarMusculo() {
     const nombreSpan = document.getElementById("nombreMusculo");
     const ejerciciosSpan = document.getElementById("ejerciciosMusculo");
     const frecuenciaSpan = document.getElementById("frecuenciaMusculo");
-
+    const mensajeError = document.getElementById("mensaje");
 
     const musculoEncontrado = musculos.find(
         (musculo) => musculo.nombre.toLowerCase() === nombreMusculo.toLowerCase()
@@ -74,8 +74,53 @@ function buscarMusculo() {
         nombreSpan.textContent = musculoEncontrado.nombre;
         ejerciciosSpan.textContent = musculoEncontrado.ejercicos;
         frecuenciaSpan.textContent = musculoEncontrado.frecuencia;
+        mensajeError.textContent = "";
     } else {
-        document.getElementById("mensaje").innerHTML = "La contraseña debe tener 8 o más caracteres.";
+        mensajeError.textContent = "Por favor seleccione un músculo.";
+
+        nombreSpan.textContent = "";
+        ejerciciosSpan.textContent = "";
+        frecuenciaSpan.textContent = "";
     }
 }
 
+
+
+function cargarDatosDesdeJSON() {
+
+    fetch('tu_archivo.json')
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById('nombreNuevoMusculo').value = data.nombre;
+            document.getElementById('frecuenciaNuevoMusculo').value = data.frecuencia;
+            document.getElementById('tipoEntrenamientoNuevoMusculo').value = data.ejercicios;
+        })
+        .catch(error => console.error('Error al cargar datos desde el JSON: ', error));
+}
+
+
+function insertarMusculoPersonalizado() {
+    const nombre = document.getElementById('nombreNuevoMusculo').value;
+    const frecuencia = document.getElementById('frecuenciaNuevoMusculo').value;
+    const ejercicios = document.getElementById('tipoEntrenamientoNuevoMusculo').value;
+
+
+    const musculoPersonalizado = {
+        nombre: nombre,
+        frecuencia: frecuencia,
+        ejercicios: ejercicios
+    };
+
+
+    const musculoPersonalizadoJSON = JSON.stringify(musculoPersonalizado);
+
+
+    localStorage.setItem('musculoPersonalizado', musculoPersonalizadoJSON);
+
+
+    const mensajeInsercion = document.getElementById('mensajeInserción');
+    mensajeInsercion.textContent = `Músculo '${nombre}' insertado con éxito.`;
+}
+
+
+cargarDatosDesdeJSON();
