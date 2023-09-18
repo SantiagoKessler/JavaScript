@@ -23,104 +23,41 @@ window.onload = function () {
     }
 };
 
+//-----------------------------------------------------------------------------------------------------------------------
 
-const musculos = [
-    {
-        nombre: "Pecho",
-        ejercicos: "Pres banca plano con barra, Pres banca inclinado con mancuernas, Cruce de poleas, Apertura en maquina",
-        frecuencia: 1,
-    },
-    {
-        nombre: "Espalda",
-        ejercicos: "Remo con barra, Pull hover ,  Jalon al pecho, Remoa una mano con mancuerna",
-        frecuencia: 1,
-    },
+document.addEventListener("DOMContentLoaded", function () {
+    const selectMusculos = document.getElementById("musculos");
+    const resultado = document.getElementById("resultado");
 
-    {
-        nombre: "Hombro",
-        ejercicos: "Pres militar con mancuernas, Elevaciones laterales en polea, Frontales con barra, Elevaciones laterales sentado con mancuernas",
-        frecuencia: 1,
-    },
-    {
-        nombre: "Piernas",
-        ejercicos: "Sentadilla, Peso muerto rumano, Prensa, Extension de cuadriceps",
-        frecuencia: 1,
-    },
-    {
-        nombre: "Biceps",
-        ejercicos: "Curl martillo,  Curl de biceps en barra W,  Curl de biceps reclinaodo en banco",
-        frecuencia: 2,
-    },
-    {
-        nombre: "Triceps",
-        ejercicos: "Extension de triceps en polea con barra,  Extension de triceps en polea a una mano, Extension de triceps en polea con soga",
-        frecuencia: 2,
+    selectMusculos.addEventListener("change", function () {
+        const musculo = selectMusculos.value;
+        cargarMusculoDesdeJSON(musculo);
+    });
+
+    function cargarMusculoDesdeJSON(musculo) {
+        fetch("./JSON/musculos.json")
+            .then((response) => response.json())
+            .then((data) => {
+                const musculoEncontrado = data.find(
+                    (item) => item.nombre === musculo
+                );
+
+                if (musculoEncontrado) {
+                    mostrarMusculo(musculoEncontrado);
+                }
+            })
+
     }
-];
 
-
-function buscarMusculo() {
-    const nombreMusculo = document.getElementById("musculo").value;
-    const nombreSpan = document.getElementById("nombreMusculo");
-    const ejerciciosSpan = document.getElementById("ejerciciosMusculo");
-    const frecuenciaSpan = document.getElementById("frecuenciaMusculo");
-    const mensajeError = document.getElementById("mensaje");
-
-    const musculoEncontrado = musculos.find(
-        (musculo) => musculo.nombre.toLowerCase() === nombreMusculo.toLowerCase()
-    );
-
-    if (musculoEncontrado) {
-        nombreSpan.textContent = musculoEncontrado.nombre;
-        ejerciciosSpan.textContent = musculoEncontrado.ejercicos;
-        frecuenciaSpan.textContent = musculoEncontrado.frecuencia;
-        mensajeError.textContent = "";
-    } else {
-        mensajeError.textContent = "Por favor seleccione un músculo.";
-
-        nombreSpan.textContent = "";
-        ejerciciosSpan.textContent = "";
-        frecuenciaSpan.textContent = "";
+    function mostrarMusculo(musculo) {
+        resultado.innerHTML = `
+       <P> Musculo seleccionado: ${musculo.nombre} </P>
+            <p>Ejercicios: ${musculo.ejercicos}</p>
+            <p>Frecuencia: ${musculo.frecuencia}</p>
+        `;
     }
-}
+});
+
+//--------------------------------------------------------------------------------------------------------------------
 
 
-
-function cargarDatosDesdeJSON() {
-
-    fetch('tu_archivo.json')
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById('nombreNuevoMusculo').value = data.nombre;
-            document.getElementById('frecuenciaNuevoMusculo').value = data.frecuencia;
-            document.getElementById('tipoEntrenamientoNuevoMusculo').value = data.ejercicios;
-        })
-        .catch(error => console.error('Error al cargar datos desde el JSON: ', error));
-}
-
-
-function insertarMusculoPersonalizado() {
-    const nombre = document.getElementById('nombreNuevoMusculo').value;
-    const frecuencia = document.getElementById('frecuenciaNuevoMusculo').value;
-    const ejercicios = document.getElementById('tipoEntrenamientoNuevoMusculo').value;
-
-
-    const musculoPersonalizado = {
-        nombre: nombre,
-        frecuencia: frecuencia,
-        ejercicios: ejercicios
-    };
-
-
-    const musculoPersonalizadoJSON = JSON.stringify(musculoPersonalizado);
-
-
-    localStorage.setItem('musculoPersonalizado', musculoPersonalizadoJSON);
-
-
-    const mensajeInsercion = document.getElementById('mensajeInserción');
-    mensajeInsercion.textContent = `Músculo '${nombre}' insertado con éxito.`;
-}
-
-
-cargarDatosDesdeJSON();

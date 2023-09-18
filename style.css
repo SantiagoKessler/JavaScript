@@ -8,12 +8,12 @@
     background-color: rgb(26, 26, 26)
 }
 
-h2 {
-    color: aliceblue;
+.titulo {
+    color: #fff;
 }
 
 
-form {
+.form1 {
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@ label {
 
 button {
     margin-top: 20px;
-    background-color: rgb(2, 2, 143);
+    background-color: #444;
     color: #fff;
     border: none;
     padding: 8px 10px;
@@ -44,7 +44,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(1, 1, 85);
+    background-color: rgb(133, 2, 2);
 
 }
 
@@ -70,9 +70,18 @@ h1 {
 
 }
 
-h2 {
+span {
     margin-top: 20px;
+    font-size: 30px;
+}
+
+
+
+h2 {
+    margin-top: 60px;
     font-weight: 600;
+    margin-bottom: 0px;
+    color: #fff;
 
 }
 
@@ -81,39 +90,22 @@ p {
     font-weight: 600;
 }
 
+.form2 {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 label {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 20px;
 }
 
 input {
 
     padding: 5px;
     margin-top: 5px;
-}
-
-button {
-    background-color: #444;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    cursor: pointer;
-    margin-top: 10px;
-
-}
-
-
-.resultado {
-    background-color: #333;
-
-    padding: 20px;
-    margin-top: 20px;
-
-    text-align: left;
-
-}
-
-#mensaje {
-    color: red;
 }
