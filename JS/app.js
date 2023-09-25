@@ -8,7 +8,7 @@ const inicio = () => {
         localStorage.setItem("username", username);
 
         setTimeout(() => {
-            window.location.href = "inicio.html";
+            window.location.href = "./paginas/inicio.html";
         }, 1000);
     } else {
         document.getElementById("message").innerHTML = "La contraseña debe tener 8 o más caracteres.";
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     async function fetchMusculosData() {
-        const response = await fetch("./JSON/musculos.json");
+        const response = await fetch("../JSON/musculos.json");
         if (!response.ok) {
             throw new Error("Network response was not ok");
         }
@@ -167,7 +167,7 @@ function finalizarCompra() {
             Swal.fire({
                 title: 'Felicitaciones!',
                 text: 'Estás a un paso de conseguirlo.',
-                imageUrl: './imagenes/conquer.jpg',
+                imageUrl: '../imagenes/conquer.jpg',
                 imageWidth: 400,
                 imageHeight: 250,
                 imageAlt: 'Custom image',
