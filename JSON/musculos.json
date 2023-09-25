@@ -2,17 +2,17 @@
     {
         "id": "1",
         "nombre": "Pectorales",
-        "ejercicos": "Pres banca plano con barra, Pres banca inclinado con mancuernas, Cruce de poleas",
+        "ejercicos": "Press banca plano con barra, Pres banca inclinado con mancuernas, Cruce de poleas",
         "frecuencia": "1"
     },
     {
         "nombre": "Espalda",
-        "ejercicos": "Remo con barra, Pull hover ,  Jalon al pecho",
+        "ejercicos": "Remo con barra, Pull hover , Jalon al pecho",
         "frecuencia": "1"
     },
     {
         "nombre": "Hombros",
-        "ejercicos": "Pres militar con mancuernas, Elevaciones laterales en polea, Elevaciones laterales sentado con mancuernas",
+        "ejercicos": "Press militar con mancuernas, Elevaciones laterales en polea, Elevaciones laterales sentado con mancuernas",
         "frecuencia": "1"
     },
     {
@@ -22,17 +22,17 @@
     },
     {
         "nombre": "Isquios",
-        "ejercicos": "Curl femoral en maquina acostado,Peso muerto rumano ,  Curl nordico",
+        "ejercicos": "Curl femoral en maquina acostado, Peso muerto rumano , Curl nordico",
         "frecuencia": "1"
     },
     {
         "nombre": "Biceps",
-        "ejercicos": "Curl de biceps tipo martillo, Curl de biceps en banco scot a una mano, curl de biceps con barra W",
+        "ejercicos": "Curl de biceps tipo martillo, Curl de biceps en banco scot a una mano, Curl de biceps con barra W",
         "frecuencia": " 2"
     },
     {
         "nombre": "Triceps",
-        "ejercicos": "Extension de triceps en polea con barra,  Extension de triceps en polea a una mano, Extension de triceps en polea con soga",
+        "ejercicos": "Extension de triceps en polea con barra, Extension de triceps en polea a una mano, Extension de triceps en polea con soga",
         "frecuencia": "2"
     }
 ]

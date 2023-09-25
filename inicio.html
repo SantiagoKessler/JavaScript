@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrenamiento de Músculos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body2">
+    <header class="header">
+        <div class="menu container">
+            <a href="#" class="logo"><img src="./imagenes/gym.png" alt=""></a>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="inicio.html">Incio</a></li>
+                </ul>
+            </nav>
+            <div>
+                <ul>
+                    <li class="submenu">
+                        <img src="./imagenes/car (1).svg" id="img-carrito" alt="carrito">
+                        <div id="carrito">
+                            <table id="lista-carrito">
+                                <thead>
+                                    <tr>
+                                        <th>imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th></th>
+                                    </tr>
+                                <tbody></tbody>
+                                </thead>
+                            </table>
+                            <a href="#" id="vaciar-carrito" class="btn-2">Vaciar Carrito</a>
+
+                            <a href="#" id="finalizar-compra" class="btn-2">Finalizar compra</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="headar-content container">
+            <div class="header-txt">
+
+                <h1>Bienvenido a tu asesoramineto deportivo</h1>
+                <p>
+                    Bienvenido al mejor asesoramiento deportivo, donde queremos guiarte hacia
+                    tu búsqueda de un estilo de vida activo y saludable. Proporcionandote la
+                    información más actualizada y relevante en el ámbito de la ciencia del entrenamiento, teniendo en
+                    cuenta todos los requisitos que tenes que hacer para alcanzar tus metas.
+
+                    Nuestro equipo de expertos se dedica a investigar y analizar los métodos de entrenamiento más
+                    efectivos, los ultimos estudios en nutrición deportiva y todo lo que necesitas para alcanzar tus
+                    objetivos personales. Estamos aquí para motivarte en cada paso que das en tu camimo hacia un mejor
+                    estilo de
+                    vida.
+                    Juntos,lograremos tus metas y te ayudaremos a alcanzar tu mejor versión. ¡Felicitaciones, estas a un
+                    paso de empezar tu cambio fisico!
+                </p>
+
+            </div>
+        </div>
+
+
+    </header>
+    <section class="section1">
+        <h2>Ideas rapidas de ejercicios y frecuencias de tu musculo favorito</h2>
+        <span>Seleccione tu musculo favorito:</span>
+        <select id="musculos" onchange="cargarMusculoSeleccionado();">
+            <option value="Pectorales">Pectorales</option>
+            <option value="Espalda">Espalda</option>
+            <option value="Hombros">Hombros</option>
+            <option value="Cuadriceps">Cuadriceps</option>
+            <option value="Isquios">Isquios</option>
+            <option value="Biceps">Biceps</option>
+            <option value="Triceps">Triceps</option>
+        </select>
+
+        <div id="musculoSeleccionado"> </div>
+
+        <div id="resultado"></div>
+    </section>
+    <main class="main" id="lista-1">
+        <section>
+            <h3>Adquiere tu plan de entrenaniemto adaptado a tus objetivos</h3>
+            <p>Creamos diferentes plantillas con distintos objetivos que tenga cada persona, totalmente personalizados
+                pensando en los tiempos, posiblidades y caracteristicas fisicas de cada uno, haciendo un cuestionario a
+                nuestro
+                cliento en donde estudiamos todas sus caracteristicas para podes brindarle un mejor resultado.
+            </p>
+        </section>
+
+
+        <div class=" product-content">
+            <div class="product">
+                <img src="./imagenes/Aumento de masa muscular .png" alt="">
+                <div class="product-txt">
+                    <h4>Productos</h4>
+                    <p class="precio">$US30</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="1">agregar</a>
+
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="./imagenes/Aumento de fuerza.png" alt="">
+                <div class="product-txt">
+                    <h4>Productos</h4>
+                    <p class="precio">$US30</p>
+
+                    <a href="#" class="agregar-carrito btn-2" data-id="2">agregar</a>
+                </div>
+            </div>
+
+            <div class="product">
+                <img src="./imagenes/Aumento de resistencia .png" alt="">
+                <div class="product-txt">
+                    <h4>Productos</h4>
+                    <p class="precio">$US30</p>
+                    <a href="#" class="agregar-carrito btn-2" data-id="3">agregar</a>
+                </div>
+            </div>
+
+
+    </main>
+
+
+    <footer class="footer">
+        <a href="http://127.0.0.1:5501/inicio.html#">volver arriba</a>
+    </footer>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./JS/app.js"></script>
+
+</body>
+
+</html>
